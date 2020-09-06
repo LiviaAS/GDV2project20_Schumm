@@ -1,37 +1,4 @@
-
-#include "yoshix.h"
-
-using namespace gfx;
-
-class CApplication : public IApplication
-{
-	public:
-
-		CApplication();
-		virtual ~CApplication();
-
-	private:
-
-		float m_FieldOfViewY;             // Vertical view angle of the camera
-
-	private:
-
-		virtual bool InternOnCreateTextures();
-		virtual bool InternOnReleaseTextures();
-		virtual bool InternOnCreateConstantBuffers();
-		virtual bool InternOnReleaseConstantBuffers();
-		virtual bool InternOnCreateShader();
-		virtual bool InternOnReleaseShader();
-		virtual bool InternOnCreateMaterials();
-		virtual bool InternOnReleaseMaterials();
-		virtual bool InternOnCreateMeshes();
-		virtual bool InternOnReleaseMeshes();
-		virtual bool InternOnResize(int _Width, int _Height);
-		virtual bool InternOnUpdate();
-		virtual bool InternOnFrame();
-};
-
-// -----------------------------------------------------------------------------
+#include "app.h"
 
 CApplication::CApplication()
 	: m_FieldOfViewY(60.0f)        // Set the vertical view angle of the camera to 60 degrees.
@@ -136,13 +103,4 @@ bool CApplication::InternOnUpdate()
 bool CApplication::InternOnFrame()
 {
 	return true;
-}
-
-// -----------------------------------------------------------------------------
-
-void main()
-{
-	CApplication Application;
-
-	RunApplication(800, 600, "YoshiX Example", &Application);
 }
