@@ -2,16 +2,19 @@
  
 "Make Art not War" ist eine Anwendung ausgelegt für 3-dimensionales Zeichnen mithilfe verschiedener Tasten-Befehle.
 
-Projekt in den Modulen Grafische Datenverarbeitung 1 und 2 / WS20 / AI_BA6
-Livia Schumm / Matrikelnummer 120013603
+Projekt in den Modulen Grafische Datenverarbeitung 1 und 2 / WS20 / AI_BA6 / Livia Schumm / Matrikelnummer 120013603.
 
 ## Steuerung
 
 ### Ansicht-Optionen
 <kbd>Esc</kbd> : Zurücksetzen der Ansicht auf Startposition. 
+
 <kbd>1</kbd> : Seitenansicht von rechts. 
+
 <kbd>2</kbd> : Front-Ansicht. 
+
 <kbd>3</kbd> : Seitenansicht von links. 
+
 <kbd>4</kbd> : Rück-Ansicht.
 
 ### Bewegen auf der Fläche
