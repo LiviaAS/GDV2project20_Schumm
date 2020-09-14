@@ -5,6 +5,9 @@
 Projekt in den Modulen Grafische Datenverarbeitung 1 und 2 / WS20 / AI_BA6 / Livia Schumm / Matrikelnummer 120013603.
 
 ## Steuerung
+In der Mitte des Bildschirmes befindet sich ein Cursor in Form eines Würfels. Dieser wird beim Bewegen auf einer freien Fläche immer im Blickfeld geführt. 
+Um den Cursor "abzusetzen", sprich mit ihm zu zeichnen, wird die <kbd>Leertaste</kbd> gedrückt gehalten.
+Durch Auf- und Abscrollen mit dem Mausrad lässt sich außerdem die Farbe des Cursors ändern.
 
 ### Ansicht-Optionen
 <kbd>Esc</kbd> : Zurücksetzen der Ansicht auf Startposition. 
@@ -34,6 +37,3 @@ Projekt in den Modulen Grafische Datenverarbeitung 1 und 2 / WS20 / AI_BA6 / Liv
 <kbd>Left</kbd> : Rotation um 90° nach links.
 
 <kbd>Right</kbd> : Rotation um 90° nach rechts.
-
-### Farbänderung
-Durch Auf- und Abscrollen mit dem Mausrad lässt sich außerdem die Farbe des Cursors ändern.
