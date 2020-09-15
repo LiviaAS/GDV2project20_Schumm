@@ -22,7 +22,7 @@ CApplication::CApplication()
 	, wHeight(0)
 	, wWidth(0)
 {
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < amountColors; i++)
 	{
 		this->cubePtr = {
 			&this->cubeMeshes[colorsIterator],
@@ -44,7 +44,7 @@ CApplication::CApplication()
 	this->cameraTarget[0]	= 0.0f;		this->cameraTarget[1]	= this->cubePtr.position[1];	this->cameraTarget[2]	= 0.0f;
 	this->cameraUp[0]		= 0.0f;		this->cameraUp[1]		= 1.0f;							this->cameraUp[2]		= 0.0f;
 
-/*	// direction(!) vectors for rotation and camera perspektive
+/*	// direction(?) vectors for rotation and camera perspektive
 	// initial x-axis vector							// initial y-axis vector							// initial z-axis vector == camera perspektive
 	this->rotationVectors.xVector[0] = DIST_CUBE_CAM;	this->rotationVectors.yVector[0] = 0.0f;			this->rotationVectors.zVector[0] = 0.0f;
 	this->rotationVectors.xVector[1] = 0.0f;			this->rotationVectors.yVector[1] = DIST_CUBE_CAM;	this->rotationVectors.zVector[1] = 0.0f;
@@ -62,6 +62,7 @@ CApplication::~CApplication()
 
 bool CApplication::AddCube()
 {
+	// save current cube in vector to be drawn
 	SEntity drawedCube = {
 		&this->cubeMeshes[colorsIterator],	
 		this->cubePtr.position[0], this->cubePtr.position[1], this->cubePtr.position[2],
@@ -179,11 +180,13 @@ bool CApplication::InternOnStartup()
 
 bool CApplication::InternOnCreateTextures()
 {
-	for (int i = 0; i < 9; i++)
+	// create textures and save in array
+	for (int i = 0; i < amountColors; i++)
 	{
 		CreateTexture(this->cubeColors[i], &this->cubeTextures[i]);
 	};
-	CreateTexture("..\\data\\images\\color_grau.png", &this->areaTexture);
+	// create constant texture for the area
+	CreateTexture("..\\data\\images\\map_dark.jpg", &this->areaTexture);
 
 	return true;
 }
@@ -192,7 +195,7 @@ bool CApplication::InternOnCreateTextures()
 
 bool CApplication::InternOnReleaseTextures()
 {
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < amountColors; i++)
 	{
 		ReleaseTexture(this->cubeTextures[i]);
 	};
@@ -281,7 +284,7 @@ bool CApplication::CreateMaterial(BHandle& texture, BHandle& material)
 
 bool CApplication::InternOnCreateMaterials()
 {
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < amountColors; i++)
 	{
 		CreateMaterial(this->cubeTextures[i], this->cubeMaterials[i]);
 	};
@@ -294,7 +297,7 @@ bool CApplication::InternOnCreateMaterials()
 
 bool CApplication::InternOnReleaseMaterials()
 {
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < amountColors; i++)
 	{
 		ReleaseMaterial(this->cubeMaterials[i]);
 	};
@@ -307,7 +310,7 @@ bool CApplication::InternOnReleaseMaterials()
 
 bool CApplication::InternOnCreateMeshes()
 {
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < amountColors; i++)
 	{
 		CreateCubeMesh(this->cubeMeshes[i], this->cubeMaterials[i]);
 	};
@@ -320,7 +323,7 @@ bool CApplication::InternOnCreateMeshes()
 
 bool CApplication::InternOnReleaseMeshes()
 {
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < amountColors; i++)
 	{
 		ReleaseMesh(this->cubeMeshes[i]);
 	};
@@ -382,27 +385,43 @@ bool CApplication::InternOnFrame()
 bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltDown)
 {	
 	/*
+		key-events for drawing
+	*/
+	if (_Key == this->SPACE_KEY && _IsKeyDown)
+	{
+		DRAW_KEY_PRESSED = true;
+	}
+	else if (_Key == this->SPACE_KEY && !_IsKeyDown)
+	{
+		DRAW_KEY_PRESSED = false;
+	};
+
+	/*
 		key-events for right and left movement																		
 	*/
 	if (this->cameraPosition[0] > (-(AREA_SIZE / 2) + CUBE_MAX_SCALE) && _IsKeyDown &&
 		((_Key == this->A_KEY && cubePtr.position[2] > cameraPosition[2]) || (_Key == this->D_KEY && cubePtr.position[2] < cameraPosition[2])))
 	{
-		this->cameraPosition[0] = this->cubePtr.position[0] -= MOVE_VAR;	// X -
+		this->cameraPosition[0] -= MOVE_VAR;				
+		this->cubePtr.position[0] -= MOVE_VAR;				// X -
 	}
 	else if (this->cameraPosition[0] < ((AREA_SIZE / 2) - CUBE_MAX_SCALE) && _IsKeyDown &&
 		((_Key == this->D_KEY && cubePtr.position[2] > cameraPosition[2]) || (_Key == this->A_KEY && cubePtr.position[2] < cameraPosition[2])))
 	{
-		this->cameraPosition[0] = this->cubePtr.position[0] += MOVE_VAR;	// X +
+		this->cameraPosition[0] += MOVE_VAR; 
+		this->cubePtr.position[0] += MOVE_VAR;				// X +
 	}
 	else if (this->cameraPosition[2] > (-(AREA_SIZE / 2) + CUBE_MAX_SCALE) && _IsKeyDown &&
 		((_Key == this->D_KEY && cubePtr.position[0] > cameraPosition[0]) || (_Key == this->A_KEY && cubePtr.position[0] < cameraPosition[0])))
 	{
-		this->cameraPosition[2] = this->cubePtr.position[2] -= MOVE_VAR;	// Z -
+		this->cameraPosition[2] -= MOVE_VAR; 
+		this->cubePtr.position[2] -= MOVE_VAR;				// Z -
 	}
 	else if (this->cameraPosition[2] < (AREA_SIZE / 2) - CUBE_MAX_SCALE && _IsKeyDown &&
 		((_Key == this->A_KEY && cubePtr.position[0] > cameraPosition[0]) || (_Key == this->D_KEY && cubePtr.position[0] < cameraPosition[0])))
 	{
-		this->cameraPosition[2] = this->cubePtr.position[2] += MOVE_VAR;	// Z +
+		this->cameraPosition[2] += MOVE_VAR; 
+		this->cubePtr.position[2] += MOVE_VAR;				// Z +
 	};
 
 	/*
@@ -412,25 +431,25 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 		((_Key == this->W_KEY && cubePtr.position[2] > cameraPosition[2]) || (_Key == this->S_KEY && cubePtr.position[2] < cameraPosition[2])))
 	{
 		this->cameraPosition[2] += MOVE_VAR;
-		this->cubePtr.position[2] += MOVE_VAR;								// Z +
+		this->cubePtr.position[2] += MOVE_VAR;				// Z +
 	}
 	else if (this->cameraPosition[2] > -(AREA_SIZE / 2) + CUBE_MAX_SCALE && _IsKeyDown &&
 		((_Key == this->W_KEY && cubePtr.position[2] < cameraPosition[2]) || (_Key == this->S_KEY && cubePtr.position[2] > cameraPosition[2])))
 	{
 		this->cameraPosition[2] -= MOVE_VAR;
-		this->cubePtr.position[2] -= MOVE_VAR;								// Z -
+		this->cubePtr.position[2] -= MOVE_VAR;				// Z -
 	}
 	else if (this->cameraPosition[0] < (AREA_SIZE / 2) - CUBE_MAX_SCALE && _IsKeyDown &&
 		((_Key == this->W_KEY && cubePtr.position[0] > cameraPosition[0]) || (_Key == this->S_KEY && cubePtr.position[0] < cameraPosition[0])))
 	{
 		this->cameraPosition[0] += MOVE_VAR;
-		this->cubePtr.position[0] += MOVE_VAR;								// X +
+		this->cubePtr.position[0] += MOVE_VAR;				// X +
 	}
 	else if (this->cameraPosition[0] > -(AREA_SIZE / 2) + CUBE_MAX_SCALE && _IsKeyDown &&
 		((_Key == this->W_KEY && cubePtr.position[0] < cameraPosition[0]) || (_Key == this->S_KEY && cubePtr.position[0] > cameraPosition[0])))
 	{
 		this->cameraPosition[0] -= MOVE_VAR;
-		this->cubePtr.position[0] -= MOVE_VAR;								// X -
+		this->cubePtr.position[0] -= MOVE_VAR;				// X -
 	};
 	
 	/*
@@ -545,18 +564,6 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 	};
 
 	/*
-		key-events for drawing
-	*/
-	if (_Key == this->SPACE_KEY && _IsKeyDown)
-	{
-		DRAW_KEY_PRESSED = true;
-	}
-	else if (_Key == this->SPACE_KEY && !_IsKeyDown)
-	{
-		DRAW_KEY_PRESSED = false;
-	};
-
-	/*
 		key-events for views
 	*/
 	if (_Key == this->ESC_KEY && _IsKeyDown)
@@ -625,7 +632,7 @@ bool CApplication::InternOnMouseEvent(int _X, int _Y, int _Button, bool _IsButto
 {
 	if (_WheelDelta == this->WHEEL_UP)
 	{
-		if (this->colorsIterator < 9)
+		if (this->colorsIterator < (amountColors -1))
 		{
 			this->colorsIterator++;
 		}
@@ -642,12 +649,12 @@ bool CApplication::InternOnMouseEvent(int _X, int _Y, int _Button, bool _IsButto
 		}
 		else
 		{
-			this->colorsIterator = 9;
-		}
+			this->colorsIterator = amountColors - 1;
+		};
 	};
 
 	// giving cube different color-mesh
-	this->cubePtr.mesh = &this->cubeMeshes[colorsIterator];
+	this->cubePtr.mesh = &this->cubeMeshes[colorsIterator];	
 
 	return false;
 }
