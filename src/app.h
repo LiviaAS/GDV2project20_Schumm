@@ -115,7 +115,6 @@ private:
 									"..\\data\\images\\rgb_yellow.png",
 									"..\\data\\images\\rgb_red.png",
 									"..\\data\\images\\rgb_magenta.jpg"	};
-
 	/*
 		NOTE:
 		global rotMatrix anlegen, in yoshix GetXYZRoation geben und so anpassen
@@ -126,7 +125,9 @@ private:
 
 private:
 	// -----------------------------------------------------------------------------
-	//	individual functions for this application
+	/*
+		individual functions for this application
+	*/
 	bool AddCube();
 	bool DrawEntity(SEntity _Entity, float _WorldMatrix[16]);
 	bool CompareFloats(float A, float B, float epsilon = 0.005f);
@@ -135,7 +136,9 @@ private:
 	//bool EditXZVectors(float _Alpha);		// for left and right rotation
 
 	// -----------------------------------------------------------------------------
-	// yoshix functions
+	/* 
+		yoshix functions
+	*/
 	virtual bool CreateMaterial(BHandle& texture, BHandle& material);
 	virtual bool InternOnStartup();
 	virtual bool InternOnCreateTextures();
