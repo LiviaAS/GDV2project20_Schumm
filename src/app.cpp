@@ -7,46 +7,49 @@ CApplication::CApplication()
 	: fieldOfViewY(60.0f)
 	, nearDist(0.1f)
 	, farDist(100.0f)
+	, colorsIterator(0)
 
-	, cubeTexture(nullptr)
-	, areaTexture(nullptr)
-	, cubeMaterial(nullptr)
-	, areaMaterial(nullptr)
-	, cubeMesh(nullptr)
-	, areaMesh(nullptr)
 	, cb_viewProjectionMatrix(nullptr)
 	, cb_worldMatrix(nullptr)
 	, vertexShader(nullptr)
 	, pixelShader(nullptr)
+
+	, areaTexture(nullptr)
+	, areaMaterial(nullptr)
+	, areaMesh(nullptr)
+
 	, DRAW_KEY_PRESSED(false)
 	, wHeight(0)
 	, wWidth(0)
-	, textureIterator(0)
 {
-	this->cubePtr = {
-		&this->cubeMesh,
-		  0.0f,   CUBE_MAX_SCALE / 2,   0.0f,	// coordinates in the world
-		  0.1f,					0.1f,   0.1f,	// coordinates for scaling
-		  0.0f,					0.0f,   0.0f	// rotation
-	};
+	for (int i = 0; i < 9; i++)
+	{
+		this->cubePtr = {
+			&this->cubeMeshes[colorsIterator],
+			  0.0f,   CUBE_MAX_SCALE / 2,   0.0f,	// coordinates in the world
+			  0.1f,					0.1f,   0.1f,	// coordinates for scaling
+			  0.0f,					0.0f,   0.0f	// rotation
+		};
+	}; 
 
 	this->area = {
 		&this->areaMesh,
-		     0.0f,   -0.5f,      0.0f,	// coordinates in the world
-		AREA_SIZE,    0.1f, AREA_SIZE,	// coordinates for scaling
-		     0.0f,    0.0f,      0.0f	// rotation
+		     0.0f,   -0.5f,      0.0f,				// coordinates in the world
+		AREA_SIZE,    0.1f, AREA_SIZE,				// coordinates for scaling
+		     0.0f,    0.0f,      0.0f				// rotation
 	};
 
 	// camera perspective variables
-	this->cameraPosition[0] = 0.0f;		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;		this->cameraPosition[2] = -DIST_CUBE_CAM;
-	this->cameraTarget[0]	= 0.0f;		this->cameraTarget[1]	= CUBE_MAX_SCALE / 2;		this->cameraTarget[2]	= 0.0f;
-	this->cameraUp[0]		= 0.0f;		this->cameraUp[1]		= 1.0f;						this->cameraUp[2]		= 0.0f;
+	this->cameraPosition[0] = 0.0f;		this->cameraPosition[1] = this->cubePtr.position[1];	this->cameraPosition[2] = (-DIST_CUBE_CAM);
+	this->cameraTarget[0]	= 0.0f;		this->cameraTarget[1]	= this->cubePtr.position[1];	this->cameraTarget[2]	= 0.0f;
+	this->cameraUp[0]		= 0.0f;		this->cameraUp[1]		= 1.0f;							this->cameraUp[2]		= 0.0f;
 
-	// direction(!) vectors for rotation and camera perspektive
+/*	// direction(!) vectors for rotation and camera perspektive
 	// initial x-axis vector							// initial y-axis vector							// initial z-axis vector == camera perspektive
 	this->rotationVectors.xVector[0] = DIST_CUBE_CAM;	this->rotationVectors.yVector[0] = 0.0f;			this->rotationVectors.zVector[0] = 0.0f;
 	this->rotationVectors.xVector[1] = 0.0f;			this->rotationVectors.yVector[1] = DIST_CUBE_CAM;	this->rotationVectors.zVector[1] = 0.0f;
 	this->rotationVectors.xVector[2] = 0.0f;			this->rotationVectors.yVector[2] = 0.0f;			this->rotationVectors.zVector[2] = DIST_CUBE_CAM;
+*/
 }
 
 // -----------------------------------------------------------------------------
@@ -60,7 +63,7 @@ CApplication::~CApplication()
 bool CApplication::AddCube()
 {
 	SEntity drawedCube = {
-		&this->cubeMesh,
+		&this->cubeMeshes[colorsIterator],	
 		this->cubePtr.position[0], this->cubePtr.position[1], this->cubePtr.position[2],
 		this->cubePtr.scale[0], this->cubePtr.scale[1], this->cubePtr.scale[2],
 		this->cubePtr.rotation[0], this->cubePtr.rotation[1], this->cubePtr.rotation[2]
@@ -83,7 +86,6 @@ bool CApplication::DrawEntity(SEntity _Entity, float _WorldMatrix[16])
 
 	GetTranslationMatrix(_Entity.position[0], _Entity.position[1], _Entity.position[2], tmpMatrix);
 	MulMatrix(_Entity.worldMatrix, tmpMatrix, _Entity.worldMatrix);
-
 	
 	if (!CompareFloats(0.0f, _Entity.rotation[0]))
 	{
@@ -104,9 +106,7 @@ bool CApplication::DrawEntity(SEntity _Entity, float _WorldMatrix[16])
 	};
 
 	MulMatrix(_WorldMatrix, _Entity.worldMatrix, _WorldMatrix);
-
 	UploadConstantBuffer(_WorldMatrix, this->cb_worldMatrix);
-
 	DrawMesh(*_Entity.mesh);
 
 	return true;
@@ -120,10 +120,11 @@ bool CApplication::CompareFloats(float A, float B, float epsilon)
 }
 
 // -----------------------------------------------------------------------------
+/*
 // x-rotation
 bool CApplication::EditYZVectors(float _Alpha)
 {
-/*	// new direction vector y-axis
+	// new direction vector y-axis
 	this->rotationVectors.yVector[1] = cameraPosition[1] - sin(_Alpha);
 	this->rotationVectors.yVector[2] = cameraPosition[2] + cos(_Alpha);
 	/*
@@ -139,7 +140,7 @@ bool CApplication::EditYZVectors(float _Alpha)
 	this->rotationVectors.zVector[0] = this->cameraPosition[0];					
 	this->rotationVectors.zVector[1] = this->cameraPosition[1] + cos(_Alpha);
 	this->rotationVectors.zVector[2] = this->cameraPosition[2] + sin(_Alpha);
-	*/
+	*
 	return false;
 }
 
@@ -154,7 +155,7 @@ bool CApplication::EditXZVectors(float _Alpha)
 	this->rotationVectors.xVector[0] = this->cameraPosition[0];
 	this->rotationVectors.xVector[1] = this->cameraPosition[1] + cos(_Alpha);
 	this->rotationVectors.xVector[2] = this->cameraPosition[2] + sin(_Alpha);
-	*/
+	*
 
 	// new vector z-axis
 	this->rotationVectors.zVector[0] += cameraPosition[0] - (sin(_Alpha) * DIST_CUBE_CAM);
@@ -163,9 +164,9 @@ bool CApplication::EditXZVectors(float _Alpha)
 	this->rotationVectors.zVector[0] = this->cameraPosition[0];
 	this->rotationVectors.zVector[1] = this->cameraPosition[1] - sin(_Alpha);
 	this->rotationVectors.zVector[2] = this->cameraPosition[2] + cos(_Alpha);
-	*/
+	*
 	return true;
-}
+} */
 
 // -----------------------------------------------------------------------------
 
@@ -178,13 +179,12 @@ bool CApplication::InternOnStartup()
 
 bool CApplication::InternOnCreateTextures()
 {
-	CreateTexture(this->cubeColors[textureIterator], &this->cubeTexture);
-	//CreateTexture("..\\data\\images\\color_w.jpg", &this->cubeTexture); 
-	CreateTexture("..\\data\\images\\color_g.png", &this->areaTexture);
-	
-	/*
-		array mit texturen	
-	*/
+	for (int i = 0; i < 9; i++)
+	{
+		CreateTexture(this->cubeColors[i], &this->cubeTextures[i]);
+	};
+	CreateTexture("..\\data\\images\\color_grau.png", &this->areaTexture);
+
 	return true;
 }
 
@@ -192,7 +192,10 @@ bool CApplication::InternOnCreateTextures()
 
 bool CApplication::InternOnReleaseTextures()
 {
-	ReleaseTexture(this->cubeTexture);
+	for (int i = 0; i < 9; i++)
+	{
+		ReleaseTexture(this->cubeTextures[i]);
+	};
 	ReleaseTexture(this->areaTexture);
 
 	return true;
@@ -278,7 +281,10 @@ bool CApplication::CreateMaterial(BHandle& texture, BHandle& material)
 
 bool CApplication::InternOnCreateMaterials()
 {
-	CreateMaterial(this->cubeTexture, this->cubeMaterial);
+	for (int i = 0; i < 9; i++)
+	{
+		CreateMaterial(this->cubeTextures[i], this->cubeMaterials[i]);
+	};
 	CreateMaterial(this->areaTexture, this->areaMaterial);
 
 	return true;
@@ -288,7 +294,10 @@ bool CApplication::InternOnCreateMaterials()
 
 bool CApplication::InternOnReleaseMaterials()
 {
-	ReleaseMaterial(this->cubeMaterial);
+	for (int i = 0; i < 9; i++)
+	{
+		ReleaseMaterial(this->cubeMaterials[i]);
+	};
 	ReleaseMaterial(this->areaMaterial);
 
 	return true;
@@ -298,7 +307,10 @@ bool CApplication::InternOnReleaseMaterials()
 
 bool CApplication::InternOnCreateMeshes()
 {
-	CreateCubeMesh(this->cubeMesh, this->cubeMaterial);
+	for (int i = 0; i < 9; i++)
+	{
+		CreateCubeMesh(this->cubeMeshes[i], this->cubeMaterials[i]);
+	};
 	CreateCubeMesh(this->areaMesh, this->areaMaterial);
 
 	return true;
@@ -308,7 +320,10 @@ bool CApplication::InternOnCreateMeshes()
 
 bool CApplication::InternOnReleaseMeshes()
 {
-	ReleaseMesh(this->cubeMesh);
+	for (int i = 0; i < 9; i++)
+	{
+		ReleaseMesh(this->cubeMeshes[i]);
+	};
 	ReleaseMesh(this->areaMesh);
 
 	return true;
@@ -349,24 +364,15 @@ bool CApplication::InternOnFrame()
 	DrawEntity(this->area, worldMatrix);
 	DrawEntity(this->cubePtr, worldMatrix);
 
-	for  (auto &cubeV : this->cubeVector)
+	for (auto& cubeV : this->cubeVector)
 	{
 		DrawEntity(cubeV, worldMatrix);
-		/* 
-		if (DRAW_KEY_PRESSED &&
-			(cubeV.position[0] != this->cubePtr.position[0]
-				|| cubeV.position[1] != this->cubePtr.position[1]
-				|| cubeV.position[2] != this->cubePtr.position[2]))
-		{
-			
-			AddCube();
-		}*/
-	}
+	};
 
 	if (DRAW_KEY_PRESSED)
 	{
 		AddCube();
-	}
+	};
 	
 	return true;
 }
@@ -375,25 +381,20 @@ bool CApplication::InternOnFrame()
 
 bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltDown)
 {	
-	if (_IsKeyDown)		// debugging
-	{
-		std::cout << _Key << std::endl;
-	}
-
 	/*
 		key-events for right and left movement																		
 	*/
-	if (this->cameraPosition[0] > -(AREA_SIZE / 2) + CUBE_MAX_SCALE && _IsKeyDown &&
-		((_Key == this->A_KEY && cubePtr.position[2] > cameraPosition[2]) || (_Key == this->D_KEY  && cubePtr.position[2] < cameraPosition[2])))
+	if (this->cameraPosition[0] > (-(AREA_SIZE / 2) + CUBE_MAX_SCALE) && _IsKeyDown &&
+		((_Key == this->A_KEY && cubePtr.position[2] > cameraPosition[2]) || (_Key == this->D_KEY && cubePtr.position[2] < cameraPosition[2])))
 	{
 		this->cameraPosition[0] = this->cubePtr.position[0] -= MOVE_VAR;	// X -
 	}
-	else if (this->cameraPosition[0] < (AREA_SIZE / 2) - CUBE_MAX_SCALE && _IsKeyDown &&
+	else if (this->cameraPosition[0] < ((AREA_SIZE / 2) - CUBE_MAX_SCALE) && _IsKeyDown &&
 		((_Key == this->D_KEY && cubePtr.position[2] > cameraPosition[2]) || (_Key == this->A_KEY && cubePtr.position[2] < cameraPosition[2])))
 	{
 		this->cameraPosition[0] = this->cubePtr.position[0] += MOVE_VAR;	// X +
 	}
-	else if (this->cameraPosition[2] > -(AREA_SIZE / 2) + CUBE_MAX_SCALE && _IsKeyDown &&
+	else if (this->cameraPosition[2] > (-(AREA_SIZE / 2) + CUBE_MAX_SCALE) && _IsKeyDown &&
 		((_Key == this->D_KEY && cubePtr.position[0] > cameraPosition[0]) || (_Key == this->A_KEY && cubePtr.position[0] < cameraPosition[0])))
 	{
 		this->cameraPosition[2] = this->cubePtr.position[2] -= MOVE_VAR;	// Z -
@@ -402,7 +403,7 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 		((_Key == this->A_KEY && cubePtr.position[0] > cameraPosition[0]) || (_Key == this->D_KEY && cubePtr.position[0] < cameraPosition[0])))
 	{
 		this->cameraPosition[2] = this->cubePtr.position[2] += MOVE_VAR;	// Z +
-	}
+	};
 
 	/*
 		key-events for forward / backward movement
@@ -430,7 +431,7 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 	{
 		this->cameraPosition[0] -= MOVE_VAR;
 		this->cubePtr.position[0] -= MOVE_VAR;								// X -
-	}
+	};
 	
 	/*
 		source rotation formula:
@@ -486,30 +487,30 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 	/*
 		key events for 90° rotation
 	*/
-	if (_Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[2] > cameraPosition[2]		// CHECK
+	if (_Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[2] > cameraPosition[2]
 		|| _Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[0] < cameraPosition[0])
 	{
 		this->cubePtr.position[0] += DIST_CUBE_CAM;			// X +
 		this->cubePtr.position[2] -= DIST_CUBE_CAM;			// Z -
 	}
-	else if (_Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[2] > cameraPosition[2]	// CHECK
+	else if (_Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[2] > cameraPosition[2]
 		|| _Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[0] > cameraPosition[0])
 	{
 		this->cubePtr.position[0] -= DIST_CUBE_CAM;			// X -
 		this->cubePtr.position[2] -= DIST_CUBE_CAM;			// Z -
 	}
-	else if (_Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[2] < cameraPosition[2]	// CHECK
+	else if (_Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[2] < cameraPosition[2]
 		|| _Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[0] < cameraPosition[0])
 	{
 		this->cubePtr.position[0] += DIST_CUBE_CAM;			// X +
 		this->cubePtr.position[2] += DIST_CUBE_CAM;			// Z +
 	}
-	else if (_Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[2] < cameraPosition[2]	// CHECK
+	else if (_Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[2] < cameraPosition[2]
 		|| _Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[0] > cameraPosition[0])
 	{
 		this->cubePtr.position[0] -= DIST_CUBE_CAM;			// X -
 		this->cubePtr.position[2] += DIST_CUBE_CAM;			// Z +
-	}
+	};
 
 	/*
 		key events to move the cube up and down 
@@ -518,38 +519,42 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 	{
 		this->cubePtr.position[1] += MOVE_VAR;
 	}
-	else if (_Key == this->DOWN_KEY && _IsKeyDown && this->cubePtr.position[1] > (CUBE_MAX_SCALE / 2))
+	else if (_Key == this->DOWN_KEY && _IsKeyDown && this->cubePtr.position[1] > (this->cubePtr.scale[1] / 2))
 	{
 		this->cubePtr.position[1] -= MOVE_VAR;
-	}
+	};
 
 	/*
 		key-events for cube scaling
 	*/
-	if (_Key == this->PLUS_KEY && _IsKeyDown && this->cubePtr.scale[0] < CUBE_MAX_SCALE) 
+	if (_Key == this->PLUS_KEY && _IsKeyDown && this->cubePtr.scale[0] < CUBE_MAX_SCALE)
 	{
+		if (this->cubePtr.position[1] < (this->cubePtr.scale[0] / 2))
+		{
+			this->cubePtr.position[1] += MOVE_VAR;
+		}
 		this->cubePtr.scale[0] += SCALE_VAR;
 		this->cubePtr.scale[1] += SCALE_VAR;
 		this->cubePtr.scale[2] += SCALE_VAR;
 	}
-	else if (_Key == this->MINUS_KEY && _IsKeyDown && this->cubePtr.scale[0] > CUBE_MIN_SCALE) 
+	else if (_Key == this->MINUS_KEY && _IsKeyDown && this->cubePtr.scale[0] > CUBE_MIN_SCALE)
 	{
 		this->cubePtr.scale[0] -= SCALE_VAR;
 		this->cubePtr.scale[1] -= SCALE_VAR;
 		this->cubePtr.scale[2] -= SCALE_VAR;
-	}
+	};
 
 	/*
 		key-events for drawing
 	*/
-	if (_Key == this->SPACE_KEY && _IsKeyDown) 
+	if (_Key == this->SPACE_KEY && _IsKeyDown)
 	{
 		DRAW_KEY_PRESSED = true;
 	}
-	else if (_Key == this->SPACE_KEY && !_IsKeyDown) 
+	else if (_Key == this->SPACE_KEY && !_IsKeyDown)
 	{
 		DRAW_KEY_PRESSED = false;
-	}
+	};
 
 	/*
 		key-events for views
@@ -560,10 +565,10 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 		this->cubePtr.position[0] = 0.0f;	this->cubePtr.position[1] = CUBE_MAX_SCALE / 2;		this->cubePtr.position[2] = 0.0f;
 	}
 	// view from right side
-	else if (_Key == this->N1_KEY && _IsKeyDown)							
+	else if (_Key == this->N1_KEY && _IsKeyDown)
 	{
-		this->cameraPosition[0] = (AREA_SIZE / 2) - CUBE_MAX_SCALE;		
-		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;		
+		this->cameraPosition[0] = (AREA_SIZE / 2) - CUBE_MAX_SCALE;
+		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;
 		this->cameraPosition[2] = 0.0f;
 
 		this->cubePtr.position[0] = this->cameraPosition[0] - DIST_CUBE_CAM;
@@ -573,9 +578,9 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 	// view from back side
 	else if (_Key == this->N2_KEY && _IsKeyDown)
 	{
-		this->cameraPosition[0] = 0.0f;		
-		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;		
-		this->cameraPosition[2] = (- (AREA_SIZE / 2) + CUBE_MAX_SCALE);
+		this->cameraPosition[0] = 0.0f;
+		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;
+		this->cameraPosition[2] = (-(AREA_SIZE / 2) + CUBE_MAX_SCALE);
 
 		this->cubePtr.position[0] = this->cameraPosition[0];
 		this->cubePtr.position[1] = this->cameraPosition[1];
@@ -584,13 +589,13 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 	// view from left side
 	else if (_Key == this->N3_KEY && _IsKeyDown)
 	{
-		this->cameraPosition[0] = (- (AREA_SIZE / 2) + CUBE_MAX_SCALE);
-		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;		
+		this->cameraPosition[0] = (-(AREA_SIZE / 2) + CUBE_MAX_SCALE);
+		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;
 		this->cameraPosition[2] = 0.0f;
 
 		this->cubePtr.position[0] = this->cameraPosition[0] + DIST_CUBE_CAM;
 		this->cubePtr.position[1] = this->cameraPosition[1];
-		this->cubePtr.position[2] = this->cameraPosition[2];	
+		this->cubePtr.position[2] = this->cameraPosition[2];
 	}
 	// view from front side
 	else if (_Key == this->N4_KEY && _IsKeyDown)
@@ -602,7 +607,7 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 		this->cubePtr.position[0] = this->cameraPosition[0];
 		this->cubePtr.position[1] = this->cameraPosition[1];
 		this->cubePtr.position[2] = this->cameraPosition[2] - DIST_CUBE_CAM;
-	}
+	};
 	
 	/*
 		camera always targeting the cube
@@ -618,54 +623,32 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 
 bool CApplication::InternOnMouseEvent(int _X, int _Y, int _Button, bool _IsButtonDown, bool _IsDoubleClick, int _WheelDelta)
 {
-	/*
-	char* thisChar = new char[this->cubeColors[textureIterator].size() + 1];
-	std::copy(this->cubeColors[textureIterator].begin(), this->cubeColors[textureIterator].end(), thisChar);
-	thisChar[this->cubeColors[textureIterator].size()] = '\0';
-	*/
-
 	if (_WheelDelta == this->WHEEL_UP)
 	{
-		if (this->textureIterator < sizeof(&cubeColors)) 
+		if (this->colorsIterator < 9)
 		{
-			this->textureIterator++;
-		} else 
-		{
-			this->textureIterator = 0;
-		}
-		//CreateTexture(this->cubeColors[textureIterator], &this->cubeTexture);
-		//CreateMaterial(this->cubeTexture, this->cubeMaterial);
-		//ReleaseTexture(this->cubeTexture);
-		//ReleaseMaterial(this->cubeMaterial);
-
-		std::cout << textureIterator;
-	}
-	else if (_WheelDelta == this->WHEEL_DOWN)
-	{
-		if (this->textureIterator > 0) 
-		{
-			this->textureIterator--;
+			this->colorsIterator++;
 		}
 		else
 		{
-			this->textureIterator = sizeof(&cubeColors);
-		}
-
-		std::cout << textureIterator;
+			this->colorsIterator = 0;
+		};
 	}
+	else if (_WheelDelta == this->WHEEL_DOWN)
+	{
+		if (this->colorsIterator > 0)
+		{
+			this->colorsIterator--;
+		}
+		else
+		{
+			this->colorsIterator = 9;
+		}
+	};
+
+	// giving cube different color-mesh
+	this->cubePtr.mesh = &this->cubeMeshes[colorsIterator];
 
 	return false;
 }
 
-// -----------------------------------------------------------------------------
-
-/*
-	TODO:
-
-	> change color of the cube with r(ot), g(ruen), b(lau), w(eiß), s(chwarz)
-
-	> create floor with different materials to switch (shiny white / shiny black)
-
-	> Ansichten wechseln (oben / seite / Draw --> Interaktion nur auf Draw beschränken)
-
-*/

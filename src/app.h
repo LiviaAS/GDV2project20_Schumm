@@ -30,12 +30,12 @@ public:
 
 private:
 
-	float fieldOfViewY;				// Vertical view angle of the camera
-	float nearDist;					// Near distance of the view frustum
-	float farDist;					// Far distance of the view frustum
-	float viewMatrix[16];           // The view matrix to transform a mesh from world space into view space.
-	float projectionMatrix[16];		// The projection matrix to transform a mesh from view space into clip space.
-	float perspectiveMatrix[16];
+	float fieldOfViewY;					// Vertical view angle of the camera
+	float nearDist;						// Near distance of the view frustum
+	float farDist;						// Far distance of the view frustum
+	float viewMatrix[16];				// The view matrix to transform a mesh from world space into view space.
+	float projectionMatrix[16];			// The projection matrix to transform a mesh from view space into clip space.
+//	float perspectiveMatrix[16];
 
 	// camera perspective variables
 	float cameraPosition[3];
@@ -43,11 +43,11 @@ private:
 	float cameraUp[3];
 
 	// textures
-	BHandle cubeTexture;
+	BHandle cubeTextures[9];
 	BHandle areaTexture;
 
 	// materials
-	BHandle cubeMaterial;
+	BHandle cubeMaterials[9];
 	BHandle areaMaterial;
 
 	// constant buffers
@@ -59,13 +59,19 @@ private:
 	BHandle pixelShader;
 
 	// meshes
-	BHandle cubeMesh;
+	BHandle cubeMeshes[9];
 	BHandle areaMesh;
 
 	// entities
-	SEntity cubePtr;
-	std::vector<SEntity> cubeVector;
+	SEntity cubePtr;					// cube entity as current curser
+	std::vector<SEntity> cubeVector;	// for dynamic saving of cube entities 
 	SEntity area;
+
+	// check variables
+	int colorsIterator;					
+	bool DRAW_KEY_PRESSED;
+	int wHeight;
+	int wWidth;
 
 	// ascii keys
 	const unsigned int UP_KEY = 38;
@@ -100,28 +106,23 @@ private:
 	const float SCALE_VAR = 0.05f;
 	const float MOVE_VAR = 0.1f;
 	const float ROT_VAR = 0.1f;
-	const char* cubeColors[5] = {	"..\\data\\images\\color_w.jpg",
-									"..\\data\\images\\color_s.jpg",
-									"..\\data\\images\\color_g.png",
-									"..\\data\\images\\rgb_b.png",
-									"..\\data\\images\\rgb_g.png", 
-									//"..\\data\\images\\rgb_r.jfif"
-	};
-	int textureIterator;
+	const char* cubeColors[9] = {	"..\\data\\images\\color_weiﬂ.jpg",
+									"..\\data\\images\\color_grau.png",
+									"..\\data\\images\\color_schwarz.jpg",
+									"..\\data\\images\\rgb_blue.png",
+									"..\\data\\images\\rgb_cyan.png",
+									"..\\data\\images\\rgb_green.png", 
+									"..\\data\\images\\rgb_yellow.png",
+									"..\\data\\images\\rgb_red.png",
+									"..\\data\\images\\rgb_magenta.jpg"	};
 
-	// rotation calculation variables
 	/*
 		NOTE:
 		global rotMatrix anlegen, in yoshix GetXYZRoation geben und so anpassen
-	*/
+	// rotation calculation variables
 	S3VectorMatrix rotationVectors;
 	float perspectiveVektor[3];
-
-
-	// check variables
-	bool DRAW_KEY_PRESSED;
-	int wHeight;
-	int wWidth;
+	*/
 
 private:
 	// -----------------------------------------------------------------------------
@@ -130,8 +131,8 @@ private:
 	bool DrawEntity(SEntity _Entity, float _WorldMatrix[16]);
 	bool CompareFloats(float A, float B, float epsilon = 0.005f);
 	//S3VectorMatrix CalcRotAxis();
-	bool EditYZVectors(float _Alpha);		// for up and down rotation
-	bool EditXZVectors(float _Alpha);		// for left and right rotation
+	//bool EditYZVectors(float _Alpha);		// for up and down rotation	
+	//bool EditXZVectors(float _Alpha);		// for left and right rotation
 
 	// -----------------------------------------------------------------------------
 	// yoshix functions
