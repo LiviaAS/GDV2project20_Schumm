@@ -20,7 +20,7 @@
     <ClInclude Include="..\..\src\meshes.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="..\..\data\shader\shader.fx">
+    <FxCompile Include="..\..\src\shader.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </FxCompile>
