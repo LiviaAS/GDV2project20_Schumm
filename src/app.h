@@ -98,13 +98,13 @@ private:
 	const int WHEEL_DOWN = -120;
 	const int WHEEL_CLICK = 1;
 
-	// const variables for user interaction
-	const float AREA_SIZE = 50.0f;
-	const float DIST_CUBE_CAM = 5.0f;
-	const float CUBE_MAX_SCALE = 2.0f;
+	// variables for user interaction
+	const float AREA_SIZE = 100.0f;
+	const float DIST_CUBE_CAM = 6.0f;
+	const float CUBE_MAX_SCALE = 1.5f;
 	const float CUBE_MIN_SCALE = 0.1f;
 	const float SCALE_VAR = 0.05f;
-	const float MOVE_VAR = 0.05f;
+	float MOVE_VAR;
 	const float ROT_VAR = 0.1f;
 	const int amountColors = 8;
 	const char* cubeColors[8] = {	"..\\data\\images\\color_weiﬂ.jpg",

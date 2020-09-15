@@ -21,28 +21,37 @@ CApplication::CApplication()
 	, DRAW_KEY_PRESSED(false)
 	, wHeight(0)
 	, wWidth(0)
+	, MOVE_VAR(0.025)
 {
 	for (int i = 0; i < amountColors; i++)
 	{
 		this->cubePtr = {
 			&this->cubeMeshes[colorsIterator],
-			  0.0f,   CUBE_MAX_SCALE / 2,   0.0f,	// coordinates in the world
-			  0.1f,					0.1f,   0.1f,	// coordinates for scaling
-			  0.0f,					0.0f,   0.0f	// rotation
+			  AREA_SIZE / 2,   CUBE_MAX_SCALE / 2,	AREA_SIZE / 2,		// coordinates in the world
+					0.1f,					0.1f,			0.1f,		// coordinates for scaling
+					0.0f,					0.0f,			0.0f		// rotation
 		};
 	}; 
 
 	this->area = {
 		&this->areaMesh,
-		     0.0f,   -0.5f,      0.0f,				// coordinates in the world
-		AREA_SIZE,    0.1f, AREA_SIZE,				// coordinates for scaling
-		     0.0f,    0.0f,      0.0f				// rotation
+		(AREA_SIZE / 2),   -0.5f, (AREA_SIZE / 2),				// coordinates in the world
+			AREA_SIZE,    0.1f,		AREA_SIZE,				// coordinates for scaling
+				 0.0f,    0.0f,			0.0f				// rotation
 	};
 
 	// camera perspective variables
-	this->cameraPosition[0] = 0.0f;		this->cameraPosition[1] = this->cubePtr.position[1];	this->cameraPosition[2] = (-DIST_CUBE_CAM);
-	this->cameraTarget[0]	= 0.0f;		this->cameraTarget[1]	= this->cubePtr.position[1];	this->cameraTarget[2]	= 0.0f;
-	this->cameraUp[0]		= 0.0f;		this->cameraUp[1]		= 1.0f;							this->cameraUp[2]		= 0.0f;
+	this->cameraPosition[0] = this->cubePtr.position[0];
+	this->cameraPosition[1] = this->cubePtr.position[1];	
+	this->cameraPosition[2] = this->cubePtr.position[2] - DIST_CUBE_CAM;
+
+	this->cameraTarget[0]	= this->cubePtr.position[0];
+	this->cameraTarget[1]	= this->cubePtr.position[1];	
+	this->cameraTarget[2]	= this->cubePtr.position[2];
+
+	this->cameraUp[0]		= 0.0f;		
+	this->cameraUp[1]		= 1.0f;							
+	this->cameraUp[2]		= 0.0f;
 
 /*	// direction(?) vectors for rotation and camera perspektive
 	// initial x-axis vector							// initial y-axis vector							// initial z-axis vector == camera perspektive
@@ -399,25 +408,25 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 	/*
 		key-events for right and left movement																		
 	*/
-	if (this->cameraPosition[0] > (-(AREA_SIZE / 2) + CUBE_MAX_SCALE) && _IsKeyDown &&
+	if (this->cubePtr.position[0] > (DIST_CUBE_CAM) && _IsKeyDown &&
 		((_Key == this->A_KEY && cubePtr.position[2] > cameraPosition[2]) || (_Key == this->D_KEY && cubePtr.position[2] < cameraPosition[2])))
 	{
 		this->cameraPosition[0] -= MOVE_VAR;				
 		this->cubePtr.position[0] -= MOVE_VAR;				// X -
 	}
-	else if (this->cameraPosition[0] < ((AREA_SIZE / 2) - CUBE_MAX_SCALE) && _IsKeyDown &&
+	else if (this->cubePtr.position[0] < (AREA_SIZE - (DIST_CUBE_CAM)) && _IsKeyDown &&
 		((_Key == this->D_KEY && cubePtr.position[2] > cameraPosition[2]) || (_Key == this->A_KEY && cubePtr.position[2] < cameraPosition[2])))
 	{
 		this->cameraPosition[0] += MOVE_VAR; 
 		this->cubePtr.position[0] += MOVE_VAR;				// X +
 	}
-	else if (this->cameraPosition[2] > (-(AREA_SIZE / 2) + CUBE_MAX_SCALE) && _IsKeyDown &&
+	else if (this->cubePtr.position[2] > DIST_CUBE_CAM && _IsKeyDown &&
 		((_Key == this->D_KEY && cubePtr.position[0] > cameraPosition[0]) || (_Key == this->A_KEY && cubePtr.position[0] < cameraPosition[0])))
 	{
 		this->cameraPosition[2] -= MOVE_VAR; 
 		this->cubePtr.position[2] -= MOVE_VAR;				// Z -
 	}
-	else if (this->cameraPosition[2] < (AREA_SIZE / 2) - CUBE_MAX_SCALE && _IsKeyDown &&
+	else if (this->cubePtr.position[2] < AREA_SIZE - DIST_CUBE_CAM && _IsKeyDown &&
 		((_Key == this->A_KEY && cubePtr.position[0] > cameraPosition[0]) || (_Key == this->D_KEY && cubePtr.position[0] < cameraPosition[0])))
 	{
 		this->cameraPosition[2] += MOVE_VAR; 
@@ -427,25 +436,25 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 	/*
 		key-events for forward / backward movement
 	*/
-	if (this->cameraPosition[2] < ((AREA_SIZE / 2) - CUBE_MAX_SCALE) && _IsKeyDown &&
+	if (this->cubePtr.position[2] < (AREA_SIZE - DIST_CUBE_CAM) && _IsKeyDown &&
 		((_Key == this->W_KEY && cubePtr.position[2] > cameraPosition[2]) || (_Key == this->S_KEY && cubePtr.position[2] < cameraPosition[2])))
 	{
 		this->cameraPosition[2] += MOVE_VAR;
 		this->cubePtr.position[2] += MOVE_VAR;				// Z +
 	}
-	else if (this->cameraPosition[2] > -(AREA_SIZE / 2) + CUBE_MAX_SCALE && _IsKeyDown &&
+	else if (this->cubePtr.position[2] > DIST_CUBE_CAM && _IsKeyDown &&
 		((_Key == this->W_KEY && cubePtr.position[2] < cameraPosition[2]) || (_Key == this->S_KEY && cubePtr.position[2] > cameraPosition[2])))
 	{
 		this->cameraPosition[2] -= MOVE_VAR;
 		this->cubePtr.position[2] -= MOVE_VAR;				// Z -
 	}
-	else if (this->cameraPosition[0] < (AREA_SIZE / 2) - CUBE_MAX_SCALE && _IsKeyDown &&
+	else if (this->cubePtr.position[0] < (AREA_SIZE - DIST_CUBE_CAM) && _IsKeyDown &&
 		((_Key == this->W_KEY && cubePtr.position[0] > cameraPosition[0]) || (_Key == this->S_KEY && cubePtr.position[0] < cameraPosition[0])))
 	{
 		this->cameraPosition[0] += MOVE_VAR;
 		this->cubePtr.position[0] += MOVE_VAR;				// X +
 	}
-	else if (this->cameraPosition[0] > -(AREA_SIZE / 2) + CUBE_MAX_SCALE && _IsKeyDown &&
+	else if (this->cubePtr.position[0] > DIST_CUBE_CAM && _IsKeyDown &&
 		((_Key == this->W_KEY && cubePtr.position[0] < cameraPosition[0]) || (_Key == this->S_KEY && cubePtr.position[0] > cameraPosition[0])))
 	{
 		this->cameraPosition[0] -= MOVE_VAR;
@@ -507,28 +516,28 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 		key events for 90° rotation
 	*/
 	if (_Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[2] > cameraPosition[2]
-		|| _Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[0] < cameraPosition[0])
+		|| _Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[2] < cameraPosition[2])
 	{
-		this->cubePtr.position[0] += DIST_CUBE_CAM;			// X +
-		this->cubePtr.position[2] -= DIST_CUBE_CAM;			// Z -
+		this->cameraPosition[0] = cubePtr.position[0] + DIST_CUBE_CAM;
+		this->cameraPosition[2] = cubePtr.position[2];
 	}
 	else if (_Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[2] > cameraPosition[2]
-		|| _Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[0] > cameraPosition[0])
+		|| _Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[2] < cameraPosition[2])
 	{
-		this->cubePtr.position[0] -= DIST_CUBE_CAM;			// X -
-		this->cubePtr.position[2] -= DIST_CUBE_CAM;			// Z -
+		this->cameraPosition[0] = cubePtr.position[0] - DIST_CUBE_CAM;
+		this->cameraPosition[2] = cubePtr.position[2];
 	}
-	else if (_Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[2] < cameraPosition[2]
+	else if (_Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[0] > cameraPosition[0]
 		|| _Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[0] < cameraPosition[0])
 	{
-		this->cubePtr.position[0] += DIST_CUBE_CAM;			// X +
-		this->cubePtr.position[2] += DIST_CUBE_CAM;			// Z +
+		this->cameraPosition[0] = cubePtr.position[0];
+		this->cameraPosition[2] = cubePtr.position[2] + DIST_CUBE_CAM;
 	}
-	else if (_Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[2] < cameraPosition[2]
-		|| _Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[0] > cameraPosition[0])
+	else if (_Key == this->RIGHT_KEY && _IsKeyDown && cubePtr.position[0] > cameraPosition[0]
+		|| _Key == this->LEFT_KEY && _IsKeyDown && cubePtr.position[0] < cameraPosition[0])
 	{
-		this->cubePtr.position[0] -= DIST_CUBE_CAM;			// X -
-		this->cubePtr.position[2] += DIST_CUBE_CAM;			// Z +
+		this->cameraPosition[0] = cubePtr.position[0];
+		this->cameraPosition[2] = cubePtr.position[2] - DIST_CUBE_CAM;
 	};
 
 	/*
@@ -563,59 +572,63 @@ bool CApplication::InternOnKeyEvent(unsigned _Key, bool _IsKeyDown, bool _IsAltD
 		this->cubePtr.scale[2] -= SCALE_VAR;
 	};
 
+	// adjust movement steps
+	MOVE_VAR = this->cubePtr.scale[0] / 2;
+
 	/*
 		key-events for views
 	*/
+	// reset to start view
 	if (_Key == this->ESC_KEY && _IsKeyDown)
 	{
-		this->cameraPosition[0] = 0.0f;		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;		this->cameraPosition[2] = (-DIST_CUBE_CAM);
-		this->cubePtr.position[0] = 0.0f;	this->cubePtr.position[1] = CUBE_MAX_SCALE / 2;		this->cubePtr.position[2] = 0.0f;
+		this->cubePtr.position[0] = AREA_SIZE / 2;
+		this->cubePtr.position[1] = CUBE_MAX_SCALE / 2;
+		this->cubePtr.position[2] = AREA_SIZE / 2;
+
+		this->cameraPosition[0] = this->cubePtr.position[0];
+		this->cameraPosition[2] = this->cubePtr.position[2] - DIST_CUBE_CAM;
 	}
-	// view from right side
+	// view from left side
 	else if (_Key == this->N1_KEY && _IsKeyDown)
 	{
-		this->cameraPosition[0] = (AREA_SIZE / 2) - CUBE_MAX_SCALE;
-		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;
-		this->cameraPosition[2] = 0.0f;
+		this->cameraPosition[0] = 0.0f;
+		this->cameraPosition[2] = AREA_SIZE / 2;
 
-		this->cubePtr.position[0] = this->cameraPosition[0] - DIST_CUBE_CAM;
-		this->cubePtr.position[1] = this->cameraPosition[1];
+		this->cubePtr.position[0] = this->cameraPosition[0] + DIST_CUBE_CAM;
+		this->cubePtr.position[1] = CUBE_MAX_SCALE / 2;
 		this->cubePtr.position[2] = this->cameraPosition[2];
 	}
 	// view from back side
 	else if (_Key == this->N2_KEY && _IsKeyDown)
 	{
-		this->cameraPosition[0] = 0.0f;
-		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;
-		this->cameraPosition[2] = (-(AREA_SIZE / 2) + CUBE_MAX_SCALE);
+		this->cameraPosition[0] = AREA_SIZE / 2;
+		this->cameraPosition[2] = AREA_SIZE;
 
 		this->cubePtr.position[0] = this->cameraPosition[0];
-		this->cubePtr.position[1] = this->cameraPosition[1];
-		this->cubePtr.position[2] = this->cameraPosition[2] + DIST_CUBE_CAM;
+		this->cubePtr.position[1] = CUBE_MAX_SCALE / 2;
+		this->cubePtr.position[2] = this->cameraPosition[2] - DIST_CUBE_CAM;
 	}
-	// view from left side
+	// view from right side
 	else if (_Key == this->N3_KEY && _IsKeyDown)
 	{
-		this->cameraPosition[0] = (-(AREA_SIZE / 2) + CUBE_MAX_SCALE);
-		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;
-		this->cameraPosition[2] = 0.0f;
+		this->cameraPosition[0] = AREA_SIZE;
+		this->cameraPosition[2] = AREA_SIZE / 2;
 
-		this->cubePtr.position[0] = this->cameraPosition[0] + DIST_CUBE_CAM;
-		this->cubePtr.position[1] = this->cameraPosition[1];
+		this->cubePtr.position[0] = this->cameraPosition[0] - DIST_CUBE_CAM;
+		this->cubePtr.position[1] = CUBE_MAX_SCALE / 2;
 		this->cubePtr.position[2] = this->cameraPosition[2];
 	}
 	// view from front side
 	else if (_Key == this->N4_KEY && _IsKeyDown)
 	{
-		this->cameraPosition[0] = 0.0f;
-		this->cameraPosition[1] = CUBE_MAX_SCALE / 2;
-		this->cameraPosition[2] = (AREA_SIZE / 2) - CUBE_MAX_SCALE;
+		this->cameraPosition[0] = AREA_SIZE / 2;
+		this->cameraPosition[2] = 0.0f;
 
 		this->cubePtr.position[0] = this->cameraPosition[0];
-		this->cubePtr.position[1] = this->cameraPosition[1];
-		this->cubePtr.position[2] = this->cameraPosition[2] - DIST_CUBE_CAM;
+		this->cubePtr.position[1] = CUBE_MAX_SCALE / 2;
+		this->cubePtr.position[2] = this->cameraPosition[2] + DIST_CUBE_CAM;
 	};
-	
+
 	/*
 		camera always targeting the cube
 	*/
@@ -632,7 +645,7 @@ bool CApplication::InternOnMouseEvent(int _X, int _Y, int _Button, bool _IsButto
 {
 	if (_WheelDelta == this->WHEEL_UP)
 	{
-		if (this->colorsIterator < (amountColors -1))
+		if (this->colorsIterator < (amountColors - 1))
 		{
 			this->colorsIterator++;
 		}
@@ -654,7 +667,7 @@ bool CApplication::InternOnMouseEvent(int _X, int _Y, int _Button, bool _IsButto
 	};
 
 	// giving cube different color-mesh
-	this->cubePtr.mesh = &this->cubeMeshes[colorsIterator];	
+	this->cubePtr.mesh = &this->cubeMeshes[colorsIterator];
 
 	return false;
 }

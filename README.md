@@ -12,13 +12,13 @@ Durch Auf- und Abscrollen mit dem Mausrad lässt sich außerdem die Farbe des Cu
 ### Ansicht-Optionen
 <kbd>Esc</kbd> : Zurücksetzen der Ansicht auf Startposition. 
 
-<kbd>1</kbd> : Seitenansicht von rechts. 
+<kbd>1</kbd> : Seitenansicht von links. 
 
-<kbd>2</kbd> : Front-Ansicht. 
+<kbd>2</kbd> : Rück-Ansicht. 
 
-<kbd>3</kbd> : Seitenansicht von links. 
+<kbd>3</kbd> : Seitenansicht von rechts. 
 
-<kbd>4</kbd> : Rück-Ansicht.
+<kbd>4</kbd> : Front-Ansicht.
 
 ### Bewegen auf der Fläche
 <kbd>W</kbd> : Vorwärtsbewegung.
