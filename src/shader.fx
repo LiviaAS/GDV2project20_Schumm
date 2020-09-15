@@ -41,7 +41,7 @@ struct PSInput
 PSInput VShader(VSInput input) 
 {
     float4 worldSpacePosition = mul(float4(input.position, 1.0f), WorldMatrix);
-    float3 lightPos = float3(1.0f, 100.0f, -10.0f);
+    float3 lightPos = float3(0.0f, 500.0f, 0.0f);
 
     PSInput result = (PSInput)0;
     result.position = mul(worldSpacePosition, ViewProjectionMatrix);
@@ -60,11 +60,10 @@ float4 PShader(PSInput input) : SV_Target
     float3 lightDir = normalize(input.lightDir);
     float3 normal = normalize(input.normal);
 
-    float4 AmbientLight = float4(0.1f, 0.1f, 0.1f, 1.0f);
+    float4 AmbientLight = float4(0.8f, 0.8f, 0.8f, 0.8f);
     float4 DiffuseLight = max(dot(normal, lightDir), 0.0f);
-    // float4 SpecularLight = pow(max(dot(WSNormal, WSHalf), 0.0f), 2.0f);
 
-    float4 Light = AmbientLight + DiffuseLight; // + SpecularLight;
+    float4 Light = AmbientLight + DiffuseLight; 
 
     return Texture.Sample(Sampler, input.texCoords) * Light;
 }
