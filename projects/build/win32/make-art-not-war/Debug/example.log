@@ -1,6 +1,7 @@
 ﻿  app.cpp
   main.cpp
   Code wird generiert...
+  LINK : C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\\build\win32\make-art-not-war\Debug\make-art-not-war_debug.exe wurde nicht gefunden oder beim letzten inkrementellen Linkvorgang nicht erstellt; vollständiger Link wird durchgeführt.
 yoshix_debug.lib(yoshix.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
 yoshix_debug.lib(yoshix_constant_buffer_manager.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_constant_buffer_manager.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
 yoshix_debug.lib(yoshix_log.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_log.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
