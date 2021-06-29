@@ -1,4 +1,5 @@
-build/
+/projects/build/
 
-.vs/
+/projects/.vs/
 
+/projects/.vs/make-art-not-war/v16/Browse.VC.opendb
