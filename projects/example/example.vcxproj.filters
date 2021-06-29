@@ -8,6 +8,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\app.h" />
     <ClInclude Include="..\..\src\meshes.h" />
+    <ClInclude Include="keys.h" />
+    <ClInclude Include="..\..\src\helper_structs.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\..\src\shader.fx" />

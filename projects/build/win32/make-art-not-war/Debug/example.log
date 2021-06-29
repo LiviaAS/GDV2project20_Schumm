@@ -1,23 +1,197 @@
 ﻿  app.cpp
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(25,1): warning C4305: "Initialisierung": Verkürzung von "double" in "float"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(7,4): error C2614: "CApplication": Unzulässige Elementinitialisierung: "fieldOfViewY" ist weder Basis noch Element
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(8,4): error C2614: "CApplication": Unzulässige Elementinitialisierung: "nearDist" ist weder Basis noch Element
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(9,4): error C2614: "CApplication": Unzulässige Elementinitialisierung: "farDist" ist weder Basis noch Element
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(12,4): error C2614: "CApplication": Unzulässige Elementinitialisierung: "cb_viewProjectionMatrix" ist weder Basis noch Element
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(13,4): error C2614: "CApplication": Unzulässige Elementinitialisierung: "cb_worldMatrix" ist weder Basis noch Element
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(14,4): error C2614: "CApplication": Unzulässige Elementinitialisierung: "vertexShader" ist weder Basis noch Element
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(15,4): error C2614: "CApplication": Unzulässige Elementinitialisierung: "pixelShader" ist weder Basis noch Element
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(17,4): error C2614: "CApplication": Unzulässige Elementinitialisierung: "areaTexture" ist weder Basis noch Element
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(18,4): error C2614: "CApplication": Unzulässige Elementinitialisierung: "areaMaterial" ist weder Basis noch Element
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(19,4): error C2614: "CApplication": Unzulässige Elementinitialisierung: "areaMesh" ist weder Basis noch Element
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(28,9): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(29,11): error C2039: "cubeMeshes" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(36,8): error C2039: "area" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(37,10): error C2039: "areaMesh" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(44,8): error C2039: "cameraPosition" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(44,34): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(45,8): error C2039: "cameraPosition" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(45,34): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(46,8): error C2039: "cameraPosition" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(46,34): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(48,8): error C2039: "cameraTarget" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(48,32): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(49,8): error C2039: "cameraTarget" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(49,32): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(50,8): error C2039: "cameraTarget" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(50,32): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(52,8): error C2039: "cameraUp" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(53,8): error C2039: "cameraUp" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(54,8): error C2039: "cameraUp" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(76,10): error C2039: "cubeMeshes" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(77,9): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(77,36): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(77,63): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(78,9): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(78,33): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(78,57): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(79,9): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(79,36): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(79,63): error C2039: "cubePtr" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(82,8): error C2039: "cubeVector" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(90,28): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(94,25): error C2039: "scale" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(94,43): error C2039: "scale" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(94,61): error C2039: "scale" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(95,20): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(95,52): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(95,63): error C2660: "gfx::MulMatrix": Funktion akzeptiert keine 2 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(190,12): message : Siehe Deklaration von "gfx::MulMatrix"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(97,31): error C2039: "position" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(97,52): error C2039: "position" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(97,73): error C2039: "position" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(97,95): error C2660: "gfx::GetTranslationMatrix": Funktion akzeptiert keine 2 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(193,12): message : Siehe Deklaration von "gfx::GetTranslationMatrix"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(98,20): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(98,52): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(98,63): error C2660: "gfx::MulMatrix": Funktion akzeptiert keine 2 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(190,12): message : Siehe Deklaration von "gfx::MulMatrix"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(100,35): error C2039: "rotation" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(100,5): error C2660: "CApplication::CompareFloats": Funktion akzeptiert keine 1 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(135,7): message : Siehe Deklaration von "CApplication::CompareFloats"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(102,30): error C2039: "rotation" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(103,21): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(103,53): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(103,64): error C2660: "gfx::MulMatrix": Funktion akzeptiert keine 2 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(190,12): message : Siehe Deklaration von "gfx::MulMatrix"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(106,35): error C2039: "rotation" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(106,5): error C2660: "CApplication::CompareFloats": Funktion akzeptiert keine 1 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(135,7): message : Siehe Deklaration von "CApplication::CompareFloats"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(108,30): error C2039: "rotation" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(109,21): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(109,53): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(109,64): error C2660: "gfx::MulMatrix": Funktion akzeptiert keine 2 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(190,12): message : Siehe Deklaration von "gfx::MulMatrix"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(112,35): error C2039: "rotation" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(112,5): error C2660: "CApplication::CompareFloats": Funktion akzeptiert keine 1 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(135,7): message : Siehe Deklaration von "CApplication::CompareFloats"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(114,30): error C2039: "rotation" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(115,21): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(115,53): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(115,64): error C2660: "gfx::MulMatrix": Funktion akzeptiert keine 2 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(190,12): message : Siehe Deklaration von "gfx::MulMatrix"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(118,34): error C2039: "worldMatrix" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(118,59): error C2660: "gfx::MulMatrix": Funktion akzeptiert keine 2 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(190,12): message : Siehe Deklaration von "gfx::MulMatrix"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(119,43): error C2039: "cb_worldMatrix" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(119,57): error C2660: "gfx::UploadConstantBuffer": Funktion akzeptiert keine 1 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(144,10): message : Siehe Deklaration von "gfx::UploadConstantBuffer"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(120,20): error C2039: "mesh" ist kein Member von "SEntity".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(8): message : Siehe Deklaration von "SEntity"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(195,45): error C2039: "cubeTextures" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(195,60): error C2660: "gfx::CreateTexture": Funktion akzeptiert keine 1 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(133,10): message : Siehe Deklaration von "gfx::CreateTexture"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(198,57): error C2039: "areaTexture" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(198,68): error C2660: "gfx::CreateTexture": Funktion akzeptiert keine 1 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(133,10): message : Siehe Deklaration von "gfx::CreateTexture"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(209,24): error C2039: "cubeTextures" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(211,23): error C2039: "areaTexture" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(223,43): error C2039: "cb_worldMatrix" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(223,57): error C2660: "gfx::CreateConstantBuffer": Funktion akzeptiert keine 1 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(141,10): message : Siehe Deklaration von "gfx::CreateConstantBuffer"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(224,43): error C2039: "cb_viewProjectionMatrix" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(224,66): error C2660: "gfx::CreateConstantBuffer": Funktion akzeptiert keine 1 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(141,10): message : Siehe Deklaration von "gfx::CreateConstantBuffer"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(234,30): error C2039: "cb_worldMatrix" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(235,30): error C2039: "cb_viewProjectionMatrix" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(245,61): error C2039: "vertexShader" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(245,73): error C2660: "gfx::CreateVertexShader": Funktion akzeptiert keine 2 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(149,10): message : Siehe Deklaration von "gfx::CreateVertexShader"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(246,60): error C2039: "pixelShader" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(246,71): error C2660: "gfx::CreatePixelShader": Funktion akzeptiert keine 2 Argumente
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\inc\yoshix.h(152,10): message : Siehe Deklaration von "gfx::CreatePixelShader"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(256,28): error C2039: "vertexShader" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(257,27): error C2039: "pixelShader" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(272,51): error C2039: "cb_worldMatrix" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(273,51): error C2039: "cb_viewProjectionMatrix" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(276,39): error C2039: "vertexShader" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(277,38): error C2039: "pixelShader" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(298,24): error C2039: "cubeTextures" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(298,47): error C2039: "cubeMaterials" ist kein Member von "CApplication".
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.h(24): message : Siehe Deklaration von "CApplication"
+C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\src\app.cpp(298,60): fatal error C1003: Mehr als 100 Fehler gefunden; Kompilierung wird abgebrochen.
   main.cpp
   Code wird generiert...
-  LINK : C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\\build\win32\make-art-not-war\Debug\make-art-not-war_debug.exe wurde nicht gefunden oder beim letzten inkrementellen Linkvorgang nicht erstellt; vollständiger Link wird durchgeführt.
-yoshix_debug.lib(yoshix.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_constant_buffer_manager.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_constant_buffer_manager.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_log.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_log.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_main.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_main.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_material_manager.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_material_manager.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_math.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_math.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_mesh.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_mesh.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_material.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_material.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_constant_buffer.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_constant_buffer.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_input_layout.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_input_layout.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_mesh_manager.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_mesh_manager.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_pixel_shader.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_pixel_shader.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_texture_2d.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_texture_2d.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_texture_manager.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_texture_manager.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_vertex_shader.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_vertex_shader.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-yoshix_debug.lib(yoshix_shader_manager.obj) : warning LNK4099: PDB "yoshix.pdb" wurde nicht mit "yoshix_debug.lib(yoshix_shader_manager.obj)" oder an "C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\build\win32\make-art-not-war\Debug\yoshix.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
-  example.vcxproj -> C:\Users\Livia\Documents\Studium FH Erfurt\6. Semester\GDV2\GDV2project20_Schumm\projects\\build\win32\make-art-not-war\Debug\make-art-not-war_debug.exe
-  ..\build\win32\make-art-not-war\Debug\make-art-not-war_debug.exe
-          1 Datei(en) kopiert.

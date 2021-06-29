@@ -1,25 +1,30 @@
 #pragma once
-#include "yoshix.h"
+//#include "yoshix.h"
 #include "stdlib.h"
+#include "keys.h"
+#include "helper_structs.h"
 #include <vector>
 #include <string>
 using namespace gfx;
 
+/*
 struct SEntity
 {
-	BHandle* mesh;
-	float position[3];
-	float scale[3];
-	float rotation[3];
-	float worldMatrix[16];
+	BHandle* m_pBMesh;
+	float m_aPosition[3];
+	float m_aScale[3];
+	float m_aRotation[3];
+	float m_aWorldMatrix[16];
 };
 
 struct S3VectorMatrix
 {
-	float xVector[3];
-	float yVector[3];
-	float zVector[3];
+	float m_aXVector[3];
+	float m_aYVector[3];
+	float m_aZVector[3];
 };
+
+*/
 
 class CApplication : public IApplication
 {
@@ -30,91 +35,72 @@ public:
 
 private:
 
-	float fieldOfViewY;					// Vertical view angle of the camera
-	float nearDist;						// Near distance of the view frustum
-	float farDist;						// Far distance of the view frustum
-	float viewMatrix[16];				// The view matrix to transform a mesh from world space into view space.
-	float projectionMatrix[16];			// The projection matrix to transform a mesh from view space into clip space.
-//	float perspectiveMatrix[16];
+	// float m_FieldOfViewY;					// Vertical view angle of the camera
+	// float m_NearDist;						// Near distance of the view frustum
+	// float m_FarDist;						// Far distance of the view frustum
+	// float m_aViewMatrix[16];				// The view matrix to transform a mesh from world space into view space.
+	// float m_aProjectionMatrix[16];			// The projection matrix to transform a mesh from view space into clip space.
+//	// float perspectiveMatrix[16];
+	// 
+	// // camera perspective variables
+	// float m_aCameraPosition[3];
+	// float m_aCameraTarget[3];
+	// float m_aCameraUp[3];
 
-	// camera perspective variables
-	float cameraPosition[3];
-	float cameraTarget[3];
-	float cameraUp[3];
+	SCamera m_SCamera;
 
 	// textures
-	BHandle cubeTextures[9];
-	BHandle areaTexture;
+	BHandle m_apCubeTextures[9];
+	BHandle m_pAreaTexture;
 
 	// materials
-	BHandle cubeMaterials[9];
-	BHandle areaMaterial;
+	BHandle m_paCubeMaterials[9];
+	BHandle m_pAreaMaterial;
 
 	// constant buffers
-	BHandle cb_worldMatrix;
-	BHandle cb_viewProjectionMatrix;
+	BHandle m_pConstantBufferWorldMatrix;
+	BHandle m_pConstantBufferViewProjectionMatrix;
 
 	// shaders
-	BHandle vertexShader;
-	BHandle pixelShader;
+	BHandle m_pVertexShader;
+	BHandle m_pPixelShader;
 
 	// meshes
-	BHandle cubeMeshes[9];
-	BHandle areaMesh;
+	BHandle m_paCubeMeshes[9];
+	BHandle m_pAreaMesh;
 
 	// entities
-	SEntity cubePtr;					// cube entity as current curser
-	std::vector<SEntity> cubeVector;	// for dynamic saving of cube entities 
-	SEntity area;
+	SEntity m_SCurrentCubeEntity;				// cube entity as current curser
+	std::vector<SEntity> m_VCubeEntities;		// for dynamic saving of cube entities 
+	SEntity m_SArea;
+
+	// Members !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 	// check variables
-	int colorsIterator;					
-	bool DRAW_KEY_PRESSED;
-	int wHeight;
-	int wWidth;
-
-	// ascii keys
-	const unsigned int UP_KEY = 38;
-	const unsigned int DOWN_KEY = 40;
-	const unsigned int LEFT_KEY = 37;
-	const unsigned int RIGHT_KEY = 39;
-	const unsigned int SPACE_KEY = 32;
-	const unsigned int PLUS_KEY = 187;
-	const unsigned int MINUS_KEY = 189;
-	const unsigned int W_KEY = 87;
-	const unsigned int A_KEY = 65;
-	const unsigned int S_KEY = 83;
-	const unsigned int D_KEY = 68;
-	const unsigned int N1_KEY = 49;
-	const unsigned int N2_KEY = 50;
-	const unsigned int N3_KEY = 51;
-	const unsigned int N4_KEY = 52;
-	const unsigned int ESC_KEY = 27;
-
-	// mouse buttons
-	const int BTN_LEFT = 0;
-	const int BTN_RIGHT = 2;
-	const int WHEEL_UP = 120;
-	const int WHEEL_DOWN = -120;
-	const int WHEEL_CLICK = 1;
+	int ColorsIterator;					
+	static bool s_DRAW_KEY_PRESSED;
+	int WindowHeight;
+	int WindowWidth;
 
 	// variables for user interaction
 	const float AREA_SIZE = 100.0f;
 	const float DIST_CUBE_CAM = 6.0f;
 	const float CUBE_MAX_SCALE = 1.5f;
 	const float CUBE_MIN_SCALE = 0.1f;
-	const float SCALE_VAR = 0.05f;
-	float MOVE_VAR;
-	const float ROT_VAR = 0.1f;
-	const int amountColors = 8;
-	const char* cubeColors[8] = {	"..\\data\\images\\color_weiﬂ.jpg",
+	const float SCALE_FACTOR = 0.05f;
+	const float MOVE_FACTOR = 0.025f;
+	const float ROT_FACTOR = 0.1f;
+	const int AMOUNT_COLORS = 8;
+	const char* cubeColors[8] = { "..\\data\\images\\color_weiﬂ.jpg",
 									"..\\data\\images\\color_grau.png",
 									"..\\data\\images\\rgb_blue.png",
 									"..\\data\\images\\rgb_cyan.png",
-									"..\\data\\images\\rgb_green.png", 
+									"..\\data\\images\\rgb_green.png",
 									"..\\data\\images\\rgb_yellow.png",
 									"..\\data\\images\\rgb_red.png",
-									"..\\data\\images\\rgb_magenta.jpg"	};
+									"..\\data\\images\\rgb_magenta.jpg" };
+
+	
 	/*
 		NOTE:
 		global rotMatrix anlegen, in yoshix GetXYZRoation geben und so anpassen
