@@ -1,1 +1,5 @@
-﻿/projects/.vs/
+build/
+
+.vs/
+
+.vscode
